@@ -1,14 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Screen1 from "./screens/Screen1";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text> Hello world </Text> <StatusBar style="auto" />
-      <Pressable>
-          <Text>Helol</Text>
-      </Pressable>
-    </View>
+    <Screen1></Screen1>
   );
 }
 
