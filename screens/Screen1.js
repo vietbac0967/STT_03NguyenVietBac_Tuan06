@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 
 export default function Screen1() {
+  const [count, setCount] = useState(0);
   const DATA = [
     {
       id: 1,
@@ -46,6 +47,12 @@ export default function Screen1() {
       title: "Hiểu lòng con trẻ",
       shop: "Minh Long Book",
     },
+    {
+      id: 7,
+      img: "trump_1.png",
+      title: "Donald Trump Thiên \n tài lãnh đạo",
+      shop: "Minh Long Book",
+    },
   ];
 
   const Item = ({ obj }) => {
@@ -65,7 +72,7 @@ export default function Screen1() {
             resizeMode="contain"
             source={require(`../assets/${obj.img}`)}
           />
-          <View>
+          <View style={{ paddingLeft: 8 }}>
             <Text>{obj.title}</Text>
             <Text style={{ color: "#E83030" }}>Shop: {obj.shop}</Text>
           </View>
@@ -73,6 +80,9 @@ export default function Screen1() {
 
         <View style={{ justifyContent: "center", marginRight: 10 }}>
           <Pressable
+            onPress={() => {
+              setCount(count + 1);
+            }}
             style={{
               backgroundColor: "#F31111",
               width: 88,
@@ -103,20 +113,21 @@ export default function Screen1() {
           style={{ width: 24, height: 24 }}
           source={require("../assets/left.png")}
         />
-        <Text style={{color:"white"}}>Chat</Text>
+        <Text style={{ color: "white" }}>Chat</Text>
         <Image
           style={{ width: 24, height: 24 }}
           source={require("../assets/cart.png")}
         />
+        <Text>{count}</Text>
       </View>
       <View style={styles.content}>
-        <Text style={{ textAlign: "center",padding: 5 }}>
+        <Text style={{ textAlign: "center", padding: 5 }}>
           Bạn có thắc mắc với sản phẩm vừa xem đừng ngại chát với shop!
         </Text>
         <FlatList
           data={DATA}
           renderItem={({ item }) => <Item obj={item} />}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item.id}
         />
       </View>
     </View>
@@ -135,6 +146,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: "gray",
+    backgroundColor: "#E5E5E5",
   },
 });
