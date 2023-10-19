@@ -39,14 +39,8 @@ function MyTabs() {
       }}
       initialRouteName={homeName}
     >
-      <Tab.Screen
-        name={homeName}
-        component={(props) => <HomeScreen {...props} />}
-      />
-      <Tab.Screen
-        name={detailName}
-        component={(props) => <DetailScreen {...props} count={count} />}
-      />
+      <Tab.Screen name={detailName} component={DetailScreen} />
+      <Tab.Screen name={homeName} component={HomeScreen} />
       <Tab.Screen name="Back" component={HomeScreen} />
     </Tab.Navigator>
   );

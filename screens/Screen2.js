@@ -9,23 +9,29 @@ import {
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
 export default function Screen2(props) {
-  const {count}  = props;
+  const { count } = props;
   const DATA = [
     {
       id: 1,
-      img1: "giacchuyen1.png",
-      img2: "daynguon1.png",
+      img: "giacchuyen1.png",
     },
     {
       id: 2,
-      img1: "dauchuyendoipsps21.png",
-      img2: "dauchuyendoi1.png",
+      img: "daynguon1.png",
     },
     {
       id: 3,
-      img1: "carbusbtops21.png",
-      img2: "daucam1.png",
+      img: "dauchuyendoipsps21.png",
     },
+    {
+      id: 4,
+      img: "dauchuyendoi1.png",
+    },
+    {
+      id: 5,
+      img: "carbusbtops21.png",
+    },
+    { id: 6, img: "daucam1.png" },
   ];
 
   const Item = ({ obj }) => (
@@ -34,33 +40,7 @@ export default function Screen2(props) {
         <Image
           resizeMode="contain"
           style={styles.img}
-          source={require(`../assets/${obj.img1}`)}
-        ></Image>
-        <Text>Cáp chuyển từ Cổng{"\n"} USB sang PS2...</Text>
-        <Image
-          style={{ width: 106, height: 13 }}
-          resizeMode="contain"
-          source={require("../assets/Group4.png")}
-        ></Image>
-        <View style={{ flexDirection: "row" }}>
-          <Text style={{ fontSize: 12, fontWeight: 700 }}>69.900 đ</Text>
-          <Text
-            style={{
-              color: "rgba(150, 157, 170, 1)",
-              fontSize: 12,
-              paddingLeft: 35,
-            }}
-          >
-            -39%
-          </Text>
-        </View>
-      </View>
-
-      <View style={styles.item}>
-        <Image
-          resizeMode="contain"
-          style={styles.img}
-          source={require(`../assets/${obj.img2}`)}
+          source={require(`../assets/${obj.img}`)}
         ></Image>
         <Text>Cáp chuyển từ Cổng{"\n"} USB sang PS2...</Text>
         <Image
@@ -123,6 +103,7 @@ export default function Screen2(props) {
         {/* Item 1 */}
         <FlatList
           data={DATA}
+          numColumns={2}
           renderItem={({ item }) => <Item obj={item}></Item>}
           keyExtractor={(item) => item.id}
         ></FlatList>
@@ -145,14 +126,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#E5E5E5",
     paddingTop: 20,
     flex: 1,
-  },
-  items: {
-    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-evenly",
   },
+  items: {
+    justifyContent: "space-around",
+  },
   item: {
-    marginTop: 5,
-    marginLeft: 10,
+    margin: 5,
   },
   img: {
     width: 155,
